@@ -8,7 +8,6 @@ DEVICE_PATH := device/xiaomi/spes
 
 # A/B
 AB_OTA_UPDATER := true
-BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
 BOARD_USES_RECOVERY_AS_BOOT := true
 
 AB_OTA_PARTITIONS += \
@@ -104,13 +103,6 @@ BOARD_HAVE_QCOM_FM := true
 
 # Metadata
 BOARD_USES_METADATA_PARTITION := true
-
-# HALs
-QCOM_SOONG_NAMESPACE := $(DEVICE_PATH)/hals
-DEVICE_SPECIFIC_AUDIO_PATH := $(DEVICE_PATH)/hals/audio
-DEVICE_SPECIFIC_DISPLAY_PATH := $(DEVICE_PATH)/hals/display
-DEVICE_SPECIFIC_MEDIA_PATH := $(DEVICE_PATH)/hals/media
-TARGET_USES_CUSTOM_DISPLAY_INTERFACE := true
 
 # OTA assert
 TARGET_OTA_ASSERT_DEVICE := spes,spesn
@@ -235,6 +227,8 @@ TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 # QCOM
 BOARD_USES_QCOM_HARDWARE := true
 
+BUILD_BROKEN_CLANG_PROPERTY := true
+
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
 
@@ -258,7 +252,7 @@ USE_SENSOR_MULTI_HAL := true
 BOARD_VNDK_VERSION := current
 
 # Sepolicy
-include device/xiaomi/spes/sepolicy/vndr/SEPolicy.mk
+include include device/qcom/sepolicy_vndr-legacy-um/SEPolicy.mk
 
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
 ifdef CR_VERSION
