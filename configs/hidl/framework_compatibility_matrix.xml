@@ -751,4 +751,13 @@
             <instance>default</instance>
         </interface>
     </hal>
+   </hal>
+        <hal format="hidl" optional="true">
+        <name>android.hardware.keymaster</name>
+        <version>4.0</version>
+        <interface>
+            <name>IKeymasterDevice</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
 </compatibility-matrix>
